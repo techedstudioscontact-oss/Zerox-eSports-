@@ -1,0 +1,15 @@
+# robots.txt for Zerox eSports
+# This file tells search engines which pages to crawl
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://techedstudioscontact-oss.github.io/Zerox-eSports-/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Block access to certain directories (if needed)
+# Disallow: /assets/
+# Disallow: /temp/

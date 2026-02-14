@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Zerox eSports</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="./assets/images/logos/zerox-icon.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    <link rel="stylesheet" href="./assets/css/forms.css">
+
+    <style>
+        .contact-container {
+            max-width: 1200px;
+            margin: 6rem auto 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            color: var(--zerox-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(15, 23, 41, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--zerox-gold);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--zerox-gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Teko', sans-serif;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a {
+            color: var(--zerox-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--zerox-gold);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contact-container">
+        <a href="index.html" class="back-btn">
+            ← Back to Home
+        </a>
+
+        <div class="contact-header">
+            <h1 class="contact-title font-teko">Contact Us</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Get in touch with Zerox eSports</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- General Inquiries -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="mail" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>General Inquiries</h3>
+                <p>For general questions and information</p>
+                <a href="mailto:ZeroX.esp.official@gmail.com">ZeroX.esp.official@gmail.com</a>
+            </div>
+
+            <!-- Tournament Support -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="trophy" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>Tournament Support</h3>
+                <p>Registration help and tournament queries</p>
+                <a href="mailto:ZeroX.esp.official@gmail.com">ZeroX.esp.official@gmail.com</a>
+            </div>
+
+            <!-- Partnerships -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="handshake" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>Partnerships</h3>
+                <p>Sponsorship and partnership opportunities</p>
+                <a href="mailto:ZeroX.esp.official@gmail.com">ZeroX.esp.official@gmail.com</a>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="phone" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>Phone</h3>
+                <p>Call us for urgent matters</p>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+
+            <!-- Instagram -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="instagram" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>Follow us for updates and highlights</p>
+                <a href="https://www.instagram.com/zeroxesports_?igsh=M3ZjZ203ZTR4Nzg5"
+                    target="_blank">@zeroxesports_</a>
+            </div>
+
+            <!-- YouTube -->
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i data-lucide="youtube" width="30" style="color: var(--zerox-gold);"></i>
+                </div>
+                <h3>YouTube</h3>
+                <p>Watch live streams and highlights</p>
+                <a href="https://youtube.com/@zeroxesports_official?si=n4QQw8aRsj2Kjvan"
+                    target="_blank">@zeroxesports_official</a>
+            </div>
+        </div>
+
+        <!-- Office Address -->
+        <div
+            style="background: rgba(15, 23, 41, 0.6); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 1rem; padding: 2.5rem; text-align: center;">
+            <h2
+                style="color: var(--zerox-gold); font-family: 'Teko', sans-serif; font-size: 2rem; margin-bottom: 1rem;">
+                First Tournament Venue
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 0.5rem;">
+                <i data-lucide="map-pin" width="20"
+                    style="display: inline; vertical-align: -4px; color: var(--zerox-gold);"></i>
+                Hazaribagh, Jharkhand
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Exact venue address will be shared with registered teams via email
+            </p>
+        </div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

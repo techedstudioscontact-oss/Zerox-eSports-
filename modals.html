@@ -1,0 +1,366 @@
+<!-- ============================================
+         REGISTRATION MODALS
+         ============================================ -->
+
+<!-- SELECTION ROUND MODAL -->
+<div id="selectionModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title font-teko">Selection Round Registration</h2>
+            <p class="modal-subtitle">BGMI & Free Fire MAX - Offline Tournament</p>
+            <button class="modal-close" onclick="closeModal('selectionModal')">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="selectionForm" class="registration-form">
+                <input type="hidden" name="form_type" value="selection_round">
+                <input type="hidden" name="price" value="299">
+
+                <!-- Team Information -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="users" width="16"></i>
+                        Team Name <span class="required">*</span>
+                    </label>
+                    <input type="text" name="team_name" class="form-input" placeholder="Enter your team name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="gamepad-2" width="16"></i>
+                        Select Game <span class="required">*</span>
+                    </label>
+                    <select name="game" class="form-select" required>
+                        <option value="">Choose game...</option>
+                        <option value="bgmi">BGMI (Battlegrounds Mobile India)</option>
+                        <option value="freefire">Free Fire MAX</option>
+                    </select>
+                </div>
+
+                <!-- Captain Details -->
+                <h3 style="color: var(--zerox-gold); margin: 1rem 0 0.5rem; font-size: 1.25rem;">Team Captain Details
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span class="required">*</span></label>
+                        <input type="text" name="captain_name" class="form-input" placeholder="Rohit Kumar" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">In-Game Name <span class="required">*</span></label>
+                        <input type="text" name="captain_ign" class="form-input" placeholder="ZEROX_Alpha" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="mail" width="16"></i>
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" name="email" class="form-input" placeholder="yourname@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="phone" width="16"></i>
+                            Phone <span class="required">*</span>
+                        </label>
+                        <input type="tel" name="phone" class="form-input" placeholder="9876543210" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="map-pin" width="16"></i>
+                        City / State <span class="required">*</span>
+                    </label>
+                    <input type="text" name="location" class="form-input" placeholder="Mumbai, Maharashtra" required>
+                </div>
+
+                <!-- Team Size -->
+                <div class="form-group">
+                    <label class="form-label">Team Size <span class="required">*</span></label>
+                    <select name="team_size" class="form-select" required>
+                        <option value="">Select team size...</option>
+                        <option value="4">Squad (4 Players)</option>
+                        <option value="2">Duo (2 Players)</option>
+                        <option value="1">Solo (1 Player)</option>
+                    </select>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="message-square" width="16"></i>
+                        Additional Information
+                    </label>
+                    <textarea name="additional_info" class="form-textarea"
+                        placeholder="Any special requirements or information..."></textarea>
+                </div>
+
+                <!-- Price Display -->
+                <div class="price-display">
+                    <div class="price-label">Entry Fee (Selection Round)</div>
+                    <div class="price-amount">₹299</div>
+                    <div class="price-details">Payment details will be sent via email after registration</div>
+                </div>
+
+                <!-- Terms -->
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="termsSelection" name="terms" class="form-checkbox" required>
+                    <label for="termsSelection" class="form-checkbox-label">
+                        I agree to the <a href="#">tournament rules</a> and understand this is an offline event at
+                        Indira Gandhi Arena, Delhi (12-14 Oct 2026)
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit">
+                    <i data-lucide="check" width="18"></i>
+                    Submit Registration - ₹299
+                </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message">
+                <div class="success-icon">
+                    <i data-lucide="check-circle" width="40" style="color: #000;"></i>
+                </div>
+                <h3 class="success-title font-teko">Registration Successful!</h3>
+                <p class="success-text">
+                    Your tournament registration has been submitted. We'll send payment details to your email within 24
+                    hours.
+                </p>
+                <button class="btn btn-primary" onclick="closeModal('selectionModal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SPECTATOR PASS MODAL -->
+<div id="spectatorModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title font-teko">Spectator Pass</h2>
+            <p class="modal-subtitle">Watch Live at Arena - All Days Access</p>
+            <button class="modal-close" onclick="closeModal('spectatorModal')">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="spectatorForm" class="registration-form">
+                <input type="hidden" name="form_type" value="spectator_pass">
+                <input type="hidden" name="price" value="99">
+
+                <!-- Personal Details -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span class="required">*</span></label>
+                        <input type="text" name="name" class="form-input" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age <span class="required">*</span></label>
+                        <input type="number" name="age" class="form-input" placeholder="18" min="8" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="mail" width="16"></i>
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" name="email" class="form-input" placeholder="yourname@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="phone" width="16"></i>
+                            Phone <span class="required">*</span>
+                        </label>
+                        <input type="tel" name="phone" class="form-input" placeholder="9876543210" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="map-pin" width="16"></i>
+                        City / State <span class="required">*</span>
+                    </label>
+                    <input type="text" name="location" class="form-input" placeholder="Delhi, India" required>
+                </div>
+
+                <!-- Number of Passes -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="ticket" width="16"></i>
+                        Number of Passes
+                    </label>
+                    <select name="num_passes" class="form-select" required>
+                        <option value="1">1 Pass - ₹99</option>
+                        <option value="2">2 Passes - ₹198</option>
+                        <option value="3">3 Passes - ₹297</option>
+                        <option value="4">4 Passes - ₹396</option>
+                    </select>
+                </div>
+
+                <!-- Price Display -->
+                <div class="price-display">
+                    <div class="price-label">Spectator Pass (Per Person)</div>
+                    <div class="price-amount">₹99</div>
+                    <div class="price-details">
+                        <strong>Includes:</strong> Arena entry for all 3 days, general seating
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="termsSpectator" name="terms" class="form-checkbox" required>
+                    <label for="termsSpectator" class="form-checkbox-label">
+                        I understand this ticket is for offline arena access at Indira Gandhi Arena, Delhi (12-14 Oct
+                        2026)
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit">
+                    <i data-lucide="ticket" width="18"></i>
+                    Purchase Ticket - ₹99
+                </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message">
+                <div class="success-icon">
+                    <i data-lucide="check-circle" width="40" style="color: #000;"></i>
+                </div>
+                <h3 class="success-title font-teko">Ticket Purchased!</h3>
+                <p class="success-text">
+                    Your spectator pass has been reserved. Payment link and e-ticket will be sent to your email.
+                </p>
+                <button class="btn btn-primary" onclick="closeModal('spectatorModal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VIP PASS MODAL -->
+<div id="vipModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title font-teko">VIP Pass</h2>
+            <p class="modal-subtitle">Premium Experience - Exclusive Benefits</p>
+            <button class="modal-close" onclick="closeModal('vipModal')">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="vipForm" class="registration-form">
+                <input type="hidden" name="form_type" value="vip_pass">
+                <input type="hidden" name="price" value="1099">
+
+                <!-- Personal Details -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Full Name <span class="required">*</span></label>
+                        <input type="text" name="name" class="form-input" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age <span class="required">*</span></label>
+                        <input type="number" name="age" class="form-input" placeholder="18" min="18" max="100" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="mail" width="16"></i>
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" name="email" class="form-input" placeholder="yourname@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i data-lucide="phone" width="16"></i>
+                            Phone <span class="required">*</span>
+                        </label>
+                        <input type="tel" name="phone" class="form-input" placeholder="9876543210" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="map-pin" width="16"></i>
+                        City / State <span class="required">*</span>
+                    </label>
+                    <input type="text" name="location" class="form-input" placeholder="Delhi, India" required>
+                </div>
+
+                <!-- Number of Passes -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="crown" width="16"></i>
+                        Number of VIP Passes
+                    </label>
+                    <select name="num_passes" class="form-select" required>
+                        <option value="1">1 VIP Pass - ₹1,099</option>
+                        <option value="2">2 VIP Passes - ₹2,198</option>
+                    </select>
+                </div>
+
+                <!-- Preferences -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i data-lucide="heart" width="16"></i>
+                        Favorite Team/Player (Optional)
+                    </label>
+                    <input type="text" name="favorite_team" class="form-input"
+                        placeholder="For meet & greet preference">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">T-Shirt Size</label>
+                    <select name="tshirt_size" class="form-select" required>
+                        <option value="">Select size...</option>
+                        <option value="S">Small (S)</option>
+                        <option value="M">Medium (M)</option>
+                        <option value="L">Large (L)</option>
+                        <option value="XL">Extra Large (XL)</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+
+                <!-- Price Display -->
+                <div class="price-display">
+                    <div class="price-label">VIP Pass (Per Person)</div>
+                    <div class="price-amount">₹1,099</div>
+                    <div class="price-details">
+                        <strong>Includes:</strong> Premium front-row seating, exclusive Zerox merch, meet & greet with
+                        players, complimentary food & beverages, VIP lounge access
+                    </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="termsVIP" name="terms" class="form-checkbox" required>
+                    <label for="termsVIP" class="form-checkbox-label">
+                        I agree to the VIP Pass terms and confirm attendance at Indira Gandhi Arena, Delhi (12-14 Oct
+                        2026)
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="form-submit">
+                    <i data-lucide="crown" width="18"></i>
+                    Purchase VIP Pass - ₹1,099
+                </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message">
+                <div class="success-icon">
+                    <i data-lucide="check-circle" width="40" style="color: #000;"></i>
+                </div>
+                <h3 class="success-title font-teko">VIP Pass Secured!</h3>
+                <p class="success-text">
+                    Welcome to the VIP experience! Payment link and exclusive VIP pass will be sent to your email.
+                </p>
+                <button class="btn btn-primary" onclick="closeModal('vipModal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

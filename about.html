@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Esports Careers in India - Zerox eSports</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="./assets/images/logos/zerox-icon.jpg">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+
+    <style>
+        .about-container {
+            max-width: 1100px;
+            margin: 6rem auto 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-title {
+            font-size: 3rem;
+            color: var(--zerox-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .about-section {
+            background: rgba(15, 23, 41, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-section h2 {
+            color: var(--zerox-gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Teko', sans-serif;
+        }
+
+        .about-section h3 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        .about-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 0.75rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--zerox-gold);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-family: 'Teko', sans-serif;
+            color: var(--zerox-gold);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 4px solid var(--zerox-gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .highlight-box p {
+            margin: 0;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .career-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .career-card h4 {
+            color: var(--zerox-gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .career-card p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--zerox-gold);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 1rem 0 1rem 1.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+            border: 2px solid var(--zerox-gold);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--zerox-gold);
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--zerox-accent);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-container">
+        <a href="index.html" class="back-btn">
+            ← Back to Home
+        </a>
+
+        <div class="about-header">
+            <h1 class="about-title font-teko">Why Esports is the Future Career in India</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">The revolution is here. Gaming is no longer just
+                a hobby—it's a billion-dollar industry.</p>
+        </div>
+
+        <!-- Industry Growth -->
+        <div class="about-section">
+            <h2>The Esports Boom in India 🚀</h2>
+            <p>
+                India's gaming and esports industry is experiencing <strong style="color: var(--zerox-gold);">explosive
+                    growth</strong>, transforming from a casual pastime into a legitimate, lucrative career path
+                recognized by the government and backed by massive investments.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">₹16.7B</div>
+                    <div class="stat-label">Projected Market Value by 2034</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">517M</div>
+                    <div class="stat-label">Total Players by 2025</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2M+</div>
+                    <div class="stat-label">New Jobs by 2034</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">14.6%</div>
+                    <div class="stat-label">Annual Growth Rate (CAGR)</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem;">
+                The Indian esports market is set to reach <strong style="color: var(--zerox-gold);">₹1 billion by
+                    2033</strong>, growing at an impressive 23.4% annually. This isn't just growth—it's a revolution.
+            </p>
+        </div>
+
+        <!-- Government Support -->
+        <div class="about-section">
+            <h2>🏛️ Government Recognition & Budget 2026</h2>
+            <p>
+                The Indian government has officially <strong style="color: var(--zerox-gold);">recognized esports as a
+                    legitimate sport</strong> (2022), paving the way for institutional support, funding, and educational
+                programs.
+            </p>
+
+            <div class="highlight-box">
+                <p style="font-weight: 600; color: var(--zerox-gold); margin-bottom: 0.5rem;">
+                    📢 Union Budget 2026-27: "Orange Economy" Initiative
+                </p>
+                <p>
+                    The government announced the establishment of <strong>AVGC Content Creator Labs</strong> (Animation,
+                    Visual Effects, Gaming, Comics) in <strong>15,000 secondary schools and 500 colleges</strong> across
+                    India, creating up to <strong>20 lakh (2 million) new jobs</strong> in the gaming and content
+                    creation sector.
+                </p>
+            </div>
+
+            <p>
+                This historic budget allocation of <strong style="color: var(--zerox-gold);">₹12.2 lakh crore</strong>
+                for digital infrastructure includes:
+            </p>
+            <ul>
+                <li>Improved 5G connectivity for seamless gaming experiences</li>
+                <li>Development of gaming and content creation skills from school level</li>
+                <li>Support for digital payment infrastructure (UPI) for in-game monetization</li>
+                <li>Recognition of gaming as part of India's creative economy</li>
+            </ul>
+        </div>
+
+        <!-- BGMI Specific -->
+        <div class="about-section">
+            <h2>🎮 BGMI Esports in 2026: Record-Breaking Growth</h2>
+            <p>
+                KRAFTON India has unveiled an ambitious <strong style="color: var(--zerox-gold);">BGMI Esports Roadmap
+                    for 2026</strong> with 7 LAN tournaments and a combined prize pool exceeding <strong>$1.5 million
+                    USD (₹12.5+ crore)</strong>.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">₹12.5Cr+</div>
+                    <div class="stat-label">Total Prize Pool 2026</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">240M+</div>
+                    <div class="stat-label">BGMI Downloads in India</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200M+</div>
+                    <div class="stat-label">Projected Viewership 2026</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50,000</div>
+                    <div class="stat-label">Jobs Created by BGMI Ecosystem</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 1.5rem;">
+                Major tournaments include BGIS 2026, BMPS 2026, BMSD 2026, and BMIC 2026—providing unprecedented
+                opportunities for Indian talent to compete on the global stage.
+            </p>
+        </div>
+
+        <!-- Career Opportunities -->
+        <div class="about-section">
+            <h2>💼 Diverse Career Opportunities in Esports</h2>
+            <p>
+                Esports isn't just about being a pro player. The industry offers a wide range of high-paying careers for
+                everyone:
+            </p>
+
+            <div class="career-grid">
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="trophy" width="20"></i>
+                        Professional Players
+                    </h4>
+                    <p><strong style="color: var(--zerox-gold);">Earnings:</strong> Up to ₹1 crore/year for top players
+                    </p>
+                </div>
+
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="video" width="20"></i>
+                        Content Creators
+                    </h4>
+                    <p><strong style="color: var(--zerox-gold);">Earnings:</strong> ₹25,000 - ₹12 lakh/month from
+                        YouTube, streaming, brand deals</p>
+                </div>
+
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="users" width="20"></i>
+                        Coaches & Analysts
+                    </h4>
+                    <p>Train professional teams and analyze gameplay strategies</p>
+                </div>
+
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="calendar" width="20"></i>
+                        Event Organizers
+                    </h4>
+                    <p>Manage tournaments, sponsorships, and live events</p>
+                </div>
+
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="code" width="20"></i>
+                        Game Developers
+                    </h4>
+                    <p>Programmers, designers, 3D artists, QA testers</p>
+                </div>
+
+                <div class="career-card">
+                    <h4>
+                        <i data-lucide="megaphone" width="20"></i>
+                        Marketing & Sales
+                    </h4>
+                    <p>Branding, advertising, media sales in gaming ecosystem</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <p style="font-weight: 600; color: var(--zerox-gold);">
+                    📊 Survey Insight: 83% of daily Indian esports players view it as a viable career option in 2026.
+                </p>
+            </div>
+        </div>
+
+        <!-- Content Creator Economy -->
+        <div class="about-section">
+            <h2>📹 The Content Creator Boom</h2>
+            <p>
+                Gaming content creation is one of the fastest-growing career paths in India, with extremely low entry
+                barriers—all you need is a smartphone to start.
+            </p>
+
+            <h3>Income Potential for Gaming Content Creators:</h3>
+            <ul>
+                <li><strong style="color: var(--zerox-gold);">YouTube Ad Revenue:</strong> ₹25,000 - ₹12 lakh per month
+                </li>
+                <li><strong style="color: var(--zerox-gold);">Live Streaming:</strong> ₹15,000 - ₹4 lakh per month
+                    (donations, subscriptions)</li>
+                <li><strong style="color: var(--zerox-gold);">Brand Deals & Sponsorships:</strong> ₹60,000 - ₹30 lakh
+                    per brand partnership</li>
+            </ul>
+
+            <p>
+                Successful Indian streamers like <strong>MortaL</strong> and <strong>Dynamo Gaming</strong> have built
+                million-dollar ventures through live streaming, tutorials, and game reviews.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong style="color: var(--zerox-gold);">Pro Tip:</strong> Content in regional languages (Hindi,
+                    Tamil, Telugu) offers less competition for new creators. Focus on games you love, upload
+                    consistently, and engage with your community!
+                </p>
+            </div>
+        </div>
+
+        <!-- Why Esports is Legitimate -->
+        <div class="about-section">
+            <h2>✅ Why Esports is NOW a Legitimate Career</h2>
+
+            <h3>1. Official Government Recognition (2022)</h3>
+            <p>Esports is recognized as a legitimate sport, bringing credibility and institutional support.</p>
+
+            <h3>2. Massive Corporate Investment</h3>
+            <p>Major companies like KRAFTON, Google, and telecom giants are investing billions in Indian gaming
+                infrastructure.</p>
+
+            <h3>3. Educational Programs & Labs</h3>
+            <p>15,000 schools and 500 colleges will have AVGC Content Creator Labs by 2027, normalizing gaming careers
+                from a young age.</p>
+
+            <h3>4. Affordable Access</h3>
+            <p>With 517 million players and widespread smartphone adoption, gaming is accessible to everyone—not just
+                the elite.</p>
+
+            <h3>5. Family Support & Social Acceptance</h3>
+            <p>As success stories emerge and the industry professionalizes, families are increasingly supportive of
+                gaming careers.</p>
+        </div>
+
+        <!-- Join the Revolution -->
+        <div class="cta-section">
+            <h2
+                style="color: var(--zerox-gold); font-family: 'Teko', sans-serif; font-size: 2.5rem; margin-bottom: 1rem;">
+                Ready to Turn Your Passion Into a Career?
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Join Zerox eSports and be part of India's esports revolution. Whether you want to compete, create
+                content, or work behind the scenes—there's a place for you.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html#tournaments" class="cta-btn">
+                    <i data-lucide="trophy" width="20"></i>
+                    Register for Tournaments
+                </a>
+                <a href="careers.html" class="cta-btn"
+                    style="background: transparent; border: 2px solid var(--zerox-gold); color: var(--zerox-gold);">
+                    <i data-lucide="briefcase" width="20"></i>
+                    Explore Careers
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
