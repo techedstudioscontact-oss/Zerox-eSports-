@@ -1,528 +1,214 @@
 /* ============================================
-   ADVANCED ANIMATIONS - ZEROX ESPORTS
-   Professional animations and effects
+   OPTIMIZED ANIMATIONS - ZEROX ESPORTS
+   GPU-accelerated, lag-free, professional
    ============================================ */
 
 /* ============================================
-   SCROLL REVEAL ANIMATIONS
+   PERFORMANCE OPTIMIZATIONS
    ============================================ */
 
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+/* Only animate transform and opacity for 60fps */
+.optimized-animation {
+    will-change: transform, opacity;
 }
 
-.reveal.active {
+/* ============================================
+   SMOOTH SCROLL REVEAL (Intersection Observer)
+   ============================================ */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-up.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.reveal-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+/* ============================================
+   SUBTLE CARD HOVER (GPU-accelerated)
+   ============================================ */
+
+.card-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.reveal-left.active {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.reveal-right {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal-right.active {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.reveal-scale {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal-scale.active {
-    opacity: 1;
-    transform: scale(1);
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
 }
 
 /* ============================================
-   FLOATING ANIMATION
+   SMOOTH BUTTON EFFECTS
    ============================================ */
 
-@keyframes float {
+.btn-smooth {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-smooth:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-smooth:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   MINIMAL GLOW EFFECT
+   ============================================ */
+
+.glow-subtle {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.glow-subtle:hover {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+/* ============================================
+   SMOOTH GRADIENT BACKGROUND (60fps)
+   ============================================ */
+
+@keyframes gradient-slow {
 
     0%,
     100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.float-animation {
-    animation: float 3s ease-in-out infinite;
-}
-
-.float-slow {
-    animation: float 4s ease-in-out infinite;
-}
-
-.float-fast {
-    animation: float 2s ease-in-out infinite;
-}
-
-/* ============================================
-   GRADIENT ANIMATIONS
-   ============================================ */
-
-@keyframes gradient-shift {
-    0% {
         background-position: 0% 50%;
     }
 
     50% {
         background-position: 100% 50%;
     }
-
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
-.animated-gradient {
-    background: linear-gradient(-45deg,
-            rgba(255, 215, 0, 0.1),
-            rgba(234, 88, 12, 0.1),
-            rgba(255, 215, 0, 0.05),
-            rgba(15, 23, 41, 0.1));
-    background-size: 400% 400%;
-    animation: gradient-shift 15s ease infinite;
+.gradient-bg {
+    background: linear-gradient(135deg,
+            rgba(15, 23, 41, 1) 0%,
+            rgba(15, 23, 41, 0.95) 50%,
+            rgba(255, 215, 0, 0.05) 100%);
+    background-size: 200% 200%;
+    animation: gradient-slow 10s ease infinite;
 }
 
 /* ============================================
-   GLOW PULSE ANIMATION
+   SCALE ON HOVER (GPU-accelerated)
    ============================================ */
 
-@keyframes glow-pulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3),
-            0 0 40px rgba(255, 215, 0, 0.2),
-            0 0 60px rgba(255, 215, 0, 0.1);
-    }
-
-    50% {
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5),
-            0 0 50px rgba(255, 215, 0, 0.3),
-            0 0 80px rgba(255, 215, 0, 0.2);
-    }
+.scale-smooth {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
+.scale-smooth:hover {
+    transform: scale(1.03);
 }
 
 /* ============================================
-   SHIMMER EFFECT
+   SMOOTH UNDERLINE ANIMATION
    ============================================ */
 
-@keyframes shimmer {
-    0% {
-        background-position: -1000px 0;
-    }
-
-    100% {
-        background-position: 1000px 0;
-    }
-}
-
-.shimmer {
+.underline-anim {
     position: relative;
-    overflow: hidden;
 }
 
-.shimmer::before {
+.underline-anim::after {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: -2px;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 215, 0, 0.1),
-            transparent);
-    animation: shimmer 3s infinite;
-}
-
-/* ============================================
-   CARD HOVER EFFECTS
-   ============================================ */
-
-.card-3d {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-3d:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2),
-        0 0 60px rgba(255, 215, 0, 0.1);
-}
-
-.card-tilt {
-    transition: transform 0.3s ease;
-}
-
-.card-tilt:hover {
-    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
-}
-
-/* ============================================
-   TEXT ANIMATIONS
-   ============================================ */
-
-@keyframes text-glow {
-
-    0%,
-    100% {
-        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5),
-            0 0 20px rgba(255, 215, 0, 0.3),
-            0 0 30px rgba(255, 215, 0, 0.2);
-    }
-
-    50% {
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
-            0 0 30px rgba(255, 215, 0, 0.5),
-            0 0 40px rgba(255, 215, 0, 0.3);
-    }
-}
-
-.text-glow-animate {
-    animation: text-glow 2s ease-in-out infinite;
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-.typing-effect {
-    overflow: hidden;
-    border-right: 3px solid var(--zerox-gold);
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end),
-        blink-caret 0.75s step-end infinite;
-}
-
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: var(--zerox-gold);
-    }
-}
-
-/* ============================================
-   BUTTON ANIMATIONS
-   ============================================ */
-
-.btn-ripple {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-ripple::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+    height: 2px;
+    background: var(--zerox-gold);
+    transition: width 0.3s ease;
 }
 
-.btn-ripple:hover::after {
-    width: 300px;
-    height: 300px;
+.underline-anim:hover::after {
+    width: 100%;
 }
 
-@keyframes pulse-ring {
-    0% {
-        transform: scale(0.8);
+/* ============================================
+   SMOOTH FADE IN ON LOAD
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
         opacity: 1;
     }
-
-    100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
 }
 
-.btn-pulse {
-    position: relative;
-}
-
-.btn-pulse::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 2px solid var(--zerox-gold);
-    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
 }
 
 /* ============================================
-   PARTICLE BACKGROUND
+   PROFESSIONAL LOADING SPINNER
    ============================================ */
 
-.particles-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--zerox-gold);
-    border-radius: 50%;
-    opacity: 0.3;
-}
-
-@keyframes float-particle {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 0.3;
-    }
-
-    90% {
-        opacity: 0.3;
-    }
-
-    100% {
-        transform: translateY(-100vh) translateX(50px);
-        opacity: 0;
-    }
-}
-
-.particle:nth-child(1) {
-    left: 10%;
-    animation: float-particle 15s infinite;
-}
-
-.particle:nth-child(2) {
-    left: 20%;
-    animation: float-particle 12s infinite 2s;
-}
-
-.particle:nth-child(3) {
-    left: 30%;
-    animation: float-particle 18s infinite 4s;
-}
-
-.particle:nth-child(4) {
-    left: 40%;
-    animation: float-particle 14s infinite 1s;
-}
-
-.particle:nth-child(5) {
-    left: 50%;
-    animation: float-particle 16s infinite 3s;
-}
-
-.particle:nth-child(6) {
-    left: 60%;
-    animation: float-particle 13s infinite 5s;
-}
-
-.particle:nth-child(7) {
-    left: 70%;
-    animation: float-particle 17s infinite 2s;
-}
-
-.particle:nth-child(8) {
-    left: 80%;
-    animation: float-particle 19s infinite 4s;
-}
-
-.particle:nth-child(9) {
-    left: 90%;
-    animation: float-particle 11s infinite 1s;
-}
-
-.particle:nth-child(10) {
-    left: 95%;
-    animation: float-particle 15s infinite 6s;
-}
-
-/* ============================================
-   LOADING ANIMATIONS
-   ============================================ */
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
+@keyframes spin-smooth {
     to {
         transform: rotate(360deg);
     }
 }
 
-.spin-animation {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.bounce-animation {
-    animation: bounce 1s ease-in-out infinite;
+.spinner {
+    border: 3px solid rgba(255, 215, 0, 0.1);
+    border-top-color: var(--zerox-gold);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin-smooth 0.8s linear infinite;
 }
 
 /* ============================================
-   SCROLL PROGRESS BAR
+   SCROLL PROGRESS BAR (Optimized)
    ============================================ */
 
-.scroll-progress {
+.progress-bar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, var(--zerox-gold), var(--zerox-accent));
     z-index: 9999;
-    transition: width 0.1s ease;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.1s ease-out;
 }
 
 /* ============================================
-   NUMBER COUNTER ANIMATION
+   REMOVE ALL HEAVY ANIMATIONS
    ============================================ */
 
-.counter {
-    font-variant-numeric: tabular-nums;
-}
+/* Disable animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
 
-/* ============================================
-   PARALLAX EFFECT
-   ============================================ */
-
-.parallax {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ============================================
-   GLOWING BORDERS
-   ============================================ */
-
-@keyframes border-glow {
-
-    0%,
-    100% {
-        border-color: rgba(255, 215, 0, 0.3);
-    }
-
-    50% {
-        border-color: rgba(255, 215, 0, 0.8);
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
-.border-glow-animate {
-    animation: border-glow 2s ease-in-out infinite;
-}
-
 /* ============================================
-   FADE IN ON LOAD
+   OPTIMIZE FOR 60FPS
    ============================================ */
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in-load {
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Stagger delays for multiple elements */
-.delay-100 {
-    animation-delay: 0.1s;
-}
-
-.delay-200 {
-    animation-delay: 0.2s;
-}
-
-.delay-300 {
-    animation-delay: 0.3s;
-}
-
-.delay-400 {
-    animation-delay: 0.4s;
-}
-
-.delay-500 {
-    animation-delay: 0.5s;
-}
-
-.delay-600 {
-    animation-delay: 0.6s;
-}
-
-/* ============================================
-   SMOOTH SCALE ON HOVER
-   ============================================ */
-
-.scale-hover {
-    transition: transform 0.3s ease;
-}
-
-.scale-hover:hover {
-    transform: scale(1.05);
+/* Force hardware acceleration where needed */
+.gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
