@@ -45,6 +45,13 @@
 
     <title>Zerox eSports - India's Premier BGMI & Free Fire Championship | Hazaribagh 2026</title>
 
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#ffd700">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="./assets/images/logos/zerox-icon.jpg">
+
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="./assets/images/logos/zerox-icon.jpg">
 
@@ -62,6 +69,9 @@
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/components.css">
     <link rel="stylesheet" href="./assets/css/animations.css">
+    <link rel="stylesheet" href="./assets/css/logo-animations.css">
+    <link rel="stylesheet" href="./assets/css/interactions.css">
+    <link rel="stylesheet" href="./assets/css/hero-enhancements.css">
     <link rel="stylesheet" href="./assets/css/forms.css">
 </head>
 
@@ -70,11 +80,25 @@
     <!-- HEADER / NAVIGATION -->
     <header class="header">
         <nav class="nav container">
-            <div class="nav-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="./assets/images/logos/zerox-shield.jpg" alt="Zerox eSports Logo" class="logo-img">
-                <div class="logo-text">
-                    <span class="logo-text-main">ZEROX <span class="text-gold">ESPORTS</span></span>
-                    <span class="logo-text-sub">EST. 2026</span>
+            <div class="logo-animated" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="logo-shield">
+                    <svg class="logo-shield-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M50 10 L80 25 L80 60 Q80 85, 50 95 Q20 85, 20 60 L20 25 Z" fill="url(#shieldGradient)"
+                            stroke="#ffd700" stroke-width="2" />
+                        <text x="50" y="60" font-family="Teko, sans-serif" font-size="40" font-weight="700"
+                            fill="#0f1729" text-anchor="middle">Z</text>
+                    </svg>
+                </div>
+                <div class="logo-text-animated">
+                    <span class="logo-text-main-animated">ZEROX ESPORTS</span>
+                    <span class="logo-text-sub-animated">EST. 2026</span>
                 </div>
             </div>
 
@@ -118,25 +142,82 @@
     <!-- HERO SECTION -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <img src="./assets/images/logos/zerox-banner.jpg" alt="Zerox eSports" class="hero-logo">
+            <div class="hero-logo-animated">
+                <div class="hero-logo-particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                <div class="hero-logo-text">
+                    <h1 class="hero-logo-title">ZEROX</h1>
+                    <h2 class="hero-logo-subtitle">ESPORTS</h2>
+                </div>
+                <div class="hero-logo-border"></div>
+            </div>
             <h1 class="hero-tagline font-teko">
                 <span class="text-gold-gradient">DOMINATE. COMPETE. CONQUER.</span>
             </h1>
             <p class="hero-description">
                 India's Premier Professional Gaming Organization
             </p>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-container reveal">
+                <div class="countdown-block">
+                    <div class="countdown-number countdown-days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-block">
+                    <div class="countdown-number countdown-hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-block">
+                    <div class="countdown-number countdown-minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-block">
+                    <div class="countdown-number countdown-seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
             <div class="hero-cta">
-                <a href="#teams" class="btn btn-primary">
-                    <i data-lucide="users" width="20" height="20"></i>
-                    View Our Teams
+                <a href="#tournaments" class="btn btn-primary btn-ripple">
+                    <i data-lucide="download" width="20" height="20"></i>
+                    Download App
                 </a>
-                <a href="#tournaments" class="btn btn-secondary">
-                    <i data-lucide="trophy" width="20" height="20"></i>
-                    Join Tournament
+                <a href="#teams" class="btn btn-secondary btn-ripple">
+                    <i data-lucide="users" width="20" height="20"></i>
+                    View Teams
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="fab-container">
+        <a href="https://www.instagram.com/zeroxesports_?igsh=M3ZjZ203ZTR4Nzg5" target="_blank" class="fab"
+            aria-label="Instagram">
+            <i data-lucide="instagram" width="24" height="24"></i>
+        </a>
+        <a href="https://youtube.com/@zeroxesports_official?si=n4QQw8aRsj2Kjvan" target="_blank" class="fab"
+            aria-label="YouTube">
+            <i data-lucide="youtube" width="24" height="24"></i>
+        </a>
+        <a href="https://discord.gg/your-discord-invite" target="_blank" class="fab" aria-label="Discord">
+            <i data-lucide="message-circle" width="24" height="24"></i>
+        </a>
+        <button id="installApp" class="fab" style="display: none;" aria-label="Install App">
+            <i data-lucide="download" width="24" height="24"></i>
+        </button>
+    </div>
 
     <!-- FEATURED GAMES SECTION -->
     <section id="games" class="section">
@@ -1262,6 +1343,7 @@
     <!-- JavaScript -->
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/forms.js"></script>
+    <script src="./assets/js/interactions.js"></script>
     <script src="./assets/js/animations.js"></script>
 </body>
 

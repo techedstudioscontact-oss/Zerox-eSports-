@@ -1,0 +1,70 @@
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+}
+
+body {
+  /* Ensure full height and prevent rubber-banding on some devices */
+  overscroll-behavior-y: none;
+  /* Disable text selection which feels 'web-like' */
+  -webkit-user-select: none;
+  user-select: none;
+  /* Tap highlight color transparent */
+  -webkit-tap-highlight-color: transparent;
+  background-color: #050505;
+  color: #ffffff;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Allow text selection in inputs */
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+@keyframes seek-ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-seek-ping {
+  animation: seek-ping 0.6s ease-out forwards;
+}
+
+/* Force Hide Native Controls */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}

@@ -1,0 +1,115 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. ROBUST SUPER ADMIN CHECK (Safest Version)
+    function isSuperAdmin() {
+      // Check Email FIRST (No DB Cost/Risk) - Explicit Case Handling
+      return request.auth.token.email != null && (
+        request.auth.token.email == 'master@lwd.com' || 
+        request.auth.token.email == 'Master@lwd.com'
+      ) || 
+      // Then Check DB Role
+      (
+        request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['superadmin', 'Superadmin', 'SuperAdmin']
+      );
+    }
+
+    // 2. ADMIN CHECK
+    function isAdmin() {
+       let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+       return request.auth != null && (role in ['admin', 'superadmin', 'Superadmin', 'SuperAdmin']);
+    }
+
+    // 3. MANAGER CHECK (Includes Admins/SuperAdmins)
+    function isManager() {
+       let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+       return request.auth != null && (role in ['manager', 'admin', 'superadmin', 'Superadmin', 'SuperAdmin']);
+    }
+
+    // USER RULES
+    match /users/{userId} {
+      // Reads: Users view own, Managers view all (for requests/approvals)
+      allow read: if request.auth != null && (request.auth.uid == userId || isManager());
+      
+      // Writes: Super Admin has full access
+      allow create, update, delete: if isSuperAdmin();
+
+      // Self-Update: Users can update non-restricted fields
+      allow update: if request.auth != null && request.auth.uid == userId
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'paidUser', 'paidAdmin', 'coins']));
+      
+      // Self-Create (Signup)
+      allow create: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // CONTENT RULES
+    match /content/{contentId} {
+      allow read: if true;
+      allow write: if isManager(); // Managers need write access to Approve/Reject
+    }
+
+    // SYSTEM SETTINGS RULES
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+    }
+
+    // COMMENTS RULES
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null && 
+          (request.auth.uid == resource.data.userId || isAdmin()); // Managers shouldn't delete user comments usually, keeping to Admin
+    }
+
+    // CONTENT REQUESTS RULES
+    match /requests/{requestId} {
+      allow read: if isManager() || (request.auth != null && request.auth.uid == resource.data.userId);
+      allow create: if request.auth != null;
+      allow delete: if isManager(); // Managers need to delete requests
+      allow update: if isManager(); // Managers need to mark completed
+    }
+
+    // AD MANAGEMENT RULES
+    match /ads/{adId} {
+      allow read: if true; 
+      allow write: if isAdmin();
+    }
+
+    // NOTIFICATION RULES
+    match /notifications/{notificationId} {
+      allow read: if true;
+      allow create: if isAdmin(); // Allow admins to send notifications
+    }
+
+    // BUG REPORTS RULES
+    match /bug_reports/{reportId} {
+      allow create: if request.auth != null; // Any logged-in user can report
+      allow read, update: if isAdmin(); // Only Admins/SuperAdmins can view/resolve (Managers don't need this)
+    }
+
+    // REVENUE POOL RULES
+    match /revenue_cycles/{cycleId} {
+        // Allow reads for dashboard
+        allow read: if request.auth != null;
+        // Allow writes for user pro payments (client-side update) and Master Admin distribution
+        allow write: if request.auth != null; 
+    }
+
+    // ADMIN ACTIVITY RULES
+    match /admin_activity/{activityId} {
+        allow read: if request.auth != null;
+        // Admins/System update this on upload
+        allow write: if isManager();
+    }
+
+    // PAYOUT REQUESTS RULES
+    match /payout_requests/{requestId} {
+        allow read: if request.auth != null && (request.auth.uid == resource.data.adminId || isSuperAdmin());
+        allow create: if request.auth != null; // Admins request payout
+        allow update: if isSuperAdmin(); // Master Admin approves/rejects
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "96057384976",
+    "firebase_url": "https://livingwithdying-8e746-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "livingwithdying-8e746",
+    "storage_bucket": "livingwithdying-8e746.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96057384976:android:fde0b8debaf08b3fa4ea95",
+        "android_client_info": {
+          "package_name": "com.aniryx.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96057384976-pt6m2pu5puvopnqqig0rgsrqsj40vvn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoh1vql9h0HdUK-F1vsf4xAe6cMmRc5i8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96057384976-pt6m2pu5puvopnqqig0rgsrqsj40vvn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

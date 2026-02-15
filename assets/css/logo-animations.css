@@ -1,0 +1,403 @@
+/* ============================================
+   ZEROX ESPORTS - ANIMATED LOGO SYSTEM
+   Professional, lag-free, GPU-accelerated
+   ============================================ */
+
+/* ============================================
+   ANIMATED NAVIGATION LOGO
+   ============================================ */
+
+.logo-animated {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-animated:hover {
+    transform: translateY(-2px);
+}
+
+/* Animated Shield/Badge */
+.logo-shield {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-shield-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+    animation: shieldPulse 3s ease-in-out infinite;
+    will-change: filter;
+}
+
+@keyframes shieldPulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    }
+}
+
+/* Shield inner glow */
+.logo-shield::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glowPulse 3s ease-in-out infinite;
+    will-change: opacity;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Animated Logo Text */
+.logo-text-animated {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.logo-text-main-animated {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg,
+            #fff 0%,
+            #ffd700 25%,
+            #fff 50%,
+            #ffd700 75%,
+            #fff 100%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    will-change: background-position;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.logo-text-sub-animated {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--zerox-gold);
+    opacity: 0.8;
+}
+
+/* ============================================
+   HERO BANNER ANIMATED LOGO
+   ============================================ */
+
+.hero-logo-animated {
+    position: relative;
+    display: inline-block;
+    padding: 2rem;
+}
+
+/* Particle Background */
+.hero-logo-particles {
+    position: absolute;
+    inset: -50%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--zerox-gold);
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 4s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 0.5s;
+    animation-duration: 3.5s;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 1s;
+    animation-duration: 4.5s;
+}
+
+.particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 1.5s;
+    animation-duration: 3s;
+}
+
+.particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 2s;
+    animation-duration: 4s;
+}
+
+.particle:nth-child(6) {
+    left: 60%;
+    animation-delay: 0.3s;
+    animation-duration: 3.8s;
+}
+
+.particle:nth-child(7) {
+    left: 70%;
+    animation-delay: 0.8s;
+    animation-duration: 4.2s;
+}
+
+.particle:nth-child(8) {
+    left: 80%;
+    animation-delay: 1.3s;
+    animation-duration: 3.3s;
+}
+
+.particle:nth-child(9) {
+    left: 90%;
+    animation-delay: 1.8s;
+    animation-duration: 3.7s;
+}
+
+.particle:nth-child(10) {
+    left: 15%;
+    animation-delay: 2.3s;
+    animation-duration: 4.3s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Main Hero Text */
+.hero-logo-text {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.hero-logo-title {
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700;
+    letter-spacing: 8px;
+    line-height: 1;
+    margin: 0;
+    background: linear-gradient(135deg,
+            #ffffff 0%,
+            #ffd700 20%,
+            #ffffff 40%,
+            #ffd700 60%,
+            #ffffff 80%,
+            #ffd700 100%);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease infinite;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    will-change: background-position, filter;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero-logo-title:hover {
+    animation: gradientShift 2s ease infinite, textPulse 1s ease-in-out infinite;
+}
+
+@keyframes textPulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.8));
+    }
+}
+
+/* ESPORTS text */
+.hero-logo-subtitle {
+    font-family: 'Teko', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    letter-spacing: 12px;
+    color: var(--zerox-gold);
+    margin: 0.5rem 0 0 0;
+    animation: fadeGlow 2s ease-in-out infinite;
+    will-change: text-shadow;
+}
+
+@keyframes fadeGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    50% {
+        text-shadow: 0 0 40px rgba(255, 215, 0, 0.6),
+            0 0 60px rgba(255, 215, 0, 0.3);
+    }
+}
+
+/* Animated Border Effect */
+.hero-logo-border {
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: 1rem;
+    background: linear-gradient(90deg,
+            var(--zerox-gold) 0%,
+            transparent 50%,
+            var(--zerox-gold) 100%);
+    background-size: 200% 100%;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 2px;
+    animation: borderSweep 3s linear infinite;
+    opacity: 0.5;
+    will-change: background-position;
+}
+
+@keyframes borderSweep {
+    to {
+        background-position: 200% 0;
+    }
+}
+
+/* ============================================
+   RESPONSIVE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .logo-shield {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logo-text-main-animated {
+        font-size: 1.25rem;
+    }
+
+    .logo-text-sub-animated {
+        font-size: 0.625rem;
+    }
+
+    .hero-logo-animated {
+        padding: 1rem;
+    }
+
+    .hero-logo-title {
+        letter-spacing: 4px;
+    }
+
+    .hero-logo-subtitle {
+        letter-spacing: 6px;
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    .logo-shield-svg,
+    .logo-shield::before,
+    .logo-text-main-animated,
+    .hero-logo-title,
+    .hero-logo-subtitle,
+    .hero-logo-border,
+    .particle {
+        animation: none !important;
+    }
+
+    .logo-text-main-animated {
+        background: var(--zerox-gold);
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+}
+
+/* Force hardware acceleration */
+.logo-animated,
+.logo-shield-svg,
+.hero-logo-title,
+.particle {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}

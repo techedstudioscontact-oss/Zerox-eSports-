@@ -1,0 +1,54 @@
+{
+  "name": "Zerox eSports",
+  "short_name": "Zerox",
+  "description": "India's Premier Professional Gaming Organization - BGMI & Free Fire Championships",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f1729",
+  "theme_color": "#ffd700",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./assets/images/logos/zerox-icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/logos/zerox-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "entertainment", "games"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Register for Tournament",
+      "short_name": "Register",
+      "description": "Quick access to tournament registration",
+      "url": "/index.html#tournaments",
+      "icons": [
+        {
+          "src": "./assets/images/logos/zerox-icon.jpg",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Teams",
+      "short_name": "Teams",
+      "description": "See our roster",
+      "url": "/index.html#teams",
+      "icons": [
+        {
+          "src": "./assets/images/logos/zerox-icon.jpg",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
