@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Zerox eSports</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#D4AF37">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Teko:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+
+    <style>
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 80px;
+            /* Header height */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: rgba(2, 6, 23, 0.95);
+            border-right: 1px solid rgba(255, 215, 0, 0.1);
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            left: 0;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0 1rem;
+        }
+
+        .sidebar-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--zerox-gold);
+        }
+
+        .sidebar-link.active {
+            border-left: 3px solid var(--zerox-gold);
+        }
+
+        .user-mini-profile {
+            margin-top: auto;
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar-sm {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--zerox-gold), #FDB931);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: black;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .welcome-header {
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(15, 23, 41, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--zerox-gold);
+        }
+
+        .recent-activity {
+            background: rgba(15, 23, 41, 0.6);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+                /* Hide sidebar on mobile for now (would use hamburger in real app) */
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-bottom: 80px;
+                /* Bottom nav space */
+            }
+
+            /* Mobile Bottom Nav */
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(2, 6, 23, 0.98);
+                border-top: 1px solid rgba(255, 215, 0, 0.1);
+                display: flex;
+                justify-content: space-around;
+                padding: 0.8rem 0;
+                z-index: 1000;
+            }
+
+            .bottom-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.7rem;
+                gap: 0.3rem;
+            }
+
+            .bottom-nav-item.active {
+                color: var(--zerox-gold);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header (Simplified Version of Main Header) -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="./index.html" class="nav-logo">
+                <span style="font-family: 'Teko', sans-serif; font-size: 1.5rem; font-weight: 700; color: white;">ZEROX
+                    <span style="color: var(--zerox-gold);">DASHBOARD</span></span>
+            </a>
+            <div class="user-mini-profile" style="border:none; padding:0;">
+                <div style="text-align:right; margin-right:1rem; display:none; @media(min-width:768px){display:block;}">
+                    <div style="color:white; font-weight:600;">PlayerOne</div>
+                    <div style="color:var(--zerox-gold); font-size:0.8rem;">ID: 883291</div>
+                </div>
+                <div class="user-avatar-sm">P1</div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item">
+                    <a href="./dashboard.html" class="sidebar-link active">
+                        <i data-lucide="layout-dashboard" width="20"></i> Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#profile" class="sidebar-link">
+                        <i data-lucide="user" width="20"></i> My Profile
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#team" class="sidebar-link">
+                        <i data-lucide="users" width="20"></i> My Team
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#tournaments" class="sidebar-link">
+                        <i data-lucide="trophy" width="20"></i> My Tournaments
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./wallet.html" class="sidebar-link">
+                        <i data-lucide="wallet" width="20"></i> Wallet
+                    </a>
+                </li>
+                <li class="sidebar-item" style="margin-top: 2rem;">
+                    <a href="./index.html" class="sidebar-link" style="color: var(--zerox-red);">
+                        <i data-lucide="log-out" width="20"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-header">
+                <h1 style="font-family:'Teko'; font-size:2.5rem; text-transform:uppercase;">Welcome back, <span
+                        style="color:var(--zerox-gold);">PlayerOne</span></h1>
+                <p style="color:var(--text-secondary);">Ready to dominate the arena today?</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="wallet" width="24"></i></div>
+                    <div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem;">Wallet Balance</div>
+                        <div style="font-size:1.5rem; font-weight:700; color:white;">₹1,250</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="trophy" width="24"></i></div>
+                    <div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem;">Tournaments Won</div>
+                        <div style="font-size:1.5rem; font-weight:700; color:white;">3</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="crosshair" width="24"></i></div>
+                    <div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem;">Matches Played</div>
+                        <div style="font-size:1.5rem; font-weight:700; color:white;">42</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i data-lucide="target" width="24"></i></div>
+                    <div>
+                        <div style="color:var(--text-secondary); font-size:0.9rem;">Total Kills</div>
+                        <div style="font-size:1.5rem; font-weight:700; color:white;">189</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Layout for Recent -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+                <!-- Recent Matches -->
+                <div class="recent-activity">
+                    <h3 style="font-family:'Teko'; font-size:1.5rem; margin-bottom:1rem; color:var(--zerox-gold);">
+                        Recent Activity</h3>
+                    <div class="activity-item">
+                        <div style="display:flex; gap:1rem; align-items:center;">
+                            <div
+                                style="background:rgba(34,197,94,0.1); color:#22c55e; padding:0.5rem; border-radius:0.3rem;">
+                                <i data-lucide="trophy" width="16"></i></div>
+                            <div>
+                                <div style="font-weight:600;">Won Match #8821</div>
+                                <div style="font-size:0.8rem; color:var(--text-secondary);">BGMI Squad • Erangel</div>
+                            </div>
+                        </div>
+                        <div style="color:#22c55e;">+₹500</div>
+                    </div>
+                    <div class="activity-item">
+                        <div style="display:flex; gap:1rem; align-items:center;">
+                            <div
+                                style="background:rgba(255,215,0,0.1); color:var(--zerox-gold); padding:0.5rem; border-radius:0.3rem;">
+                                <i data-lucide="log-in" width="16"></i></div>
+                            <div>
+                                <div style="font-weight:600;">Joined Tournament</div>
+                                <div style="font-size:0.8rem; color:var(--text-secondary);">Zerox Championship</div>
+                            </div>
+                        </div>
+                        <div style="color:var(--text-secondary);">-₹100</div>
+                    </div>
+                    <div class="activity-item">
+                        <div style="display:flex; gap:1rem; align-items:center;">
+                            <div
+                                style="background:rgba(239,68,68,0.1); color:#ef4444; padding:0.5rem; border-radius:0.3rem;">
+                                <i data-lucide="skull" width="16"></i></div>
+                            <div>
+                                <div style="font-weight:600;">Eliminated in Top 10</div>
+                                <div style="font-size:0.8rem; color:var(--text-secondary);">Free Fire Solo</div>
+                            </div>
+                        </div>
+                        <div style="color:var(--text-secondary);">#8</div>
+                    </div>
+                </div>
+
+                <!-- Active Tournaments -->
+                <div class="recent-activity">
+                    <h3 style="font-family:'Teko'; font-size:1.5rem; margin-bottom:1rem; color:var(--zerox-gold);">
+                        Upcoming Matches</h3>
+                    <div
+                        style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:0.5rem; margin-bottom:1rem; border-left:3px solid var(--zerox-gold);">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
+                            <span
+                                style="font-size:0.8rem; background:var(--zerox-gold); color:black; padding:0.1rem 0.5rem; border-radius:0.2rem; font-weight:700;">TODAY</span>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">8:00 PM</span>
+                        </div>
+                        <div style="font-weight:700; font-size:1.1rem; margin-bottom:0.2rem;">Zerox Daily Scrims</div>
+                        <div style="font-size:0.9rem; color:var(--text-secondary);"><i data-lucide="users" width="14"
+                                style="vertical-align:middle;"></i> Squad Match</div>
+                        <button
+                            style="width:100%; margin-top:0.8rem; padding:0.5rem; background:rgba(255,215,0,0.1); border:1px solid var(--zerox-gold); color:var(--zerox-gold); border-radius:0.3rem; cursor:pointer;">View
+                            Room ID</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav" style="display: none;">
+        <a href="./dashboard.html" class="bottom-nav-item active">
+            <i data-lucide="layout-dashboard" width="20"></i>
+            <span>Home</span>
+        </a>
+        <a href="#tournaments" class="bottom-nav-item">
+            <i data-lucide="trophy" width="20"></i>
+            <span>Matches</span>
+        </a>
+        <a href="./wallet.html" class="bottom-nav-item">
+            <i data-lucide="wallet" width="20"></i>
+            <span>Wallet</span>
+        </a>
+        <a href="#profile" class="bottom-nav-item">
+            <i data-lucide="user" width="20"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+
+        // Check mobile view for bottom nav
+        function checkMobile() {
+            const bottomNav = document.querySelector('.bottom-nav');
+            if (window.innerWidth <= 768) {
+                bottomNav.style.display = 'flex';
+            } else {
+                bottomNav.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkMobile);
+        checkMobile(); // Initial check
+    </script>
+
+</body>
+
+</html>

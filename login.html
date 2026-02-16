@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Zerox eSports</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#D4AF37">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Teko:wght@600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/forms.css">
+
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #020617 0%, #0f1729 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Particle Background Effect (Simple CSS) */
+        .auth-bg-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .p1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .p2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            right: -100px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+        }
+
+        .auth-card {
+            background: rgba(15, 23, 41, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 1rem;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .auth-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+        }
+
+        .auth-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.5rem;
+            color: var(--zerox-gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .auth-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .form-input-wrapper {
+            position: relative;
+        }
+
+        .form-input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--zerox-gold);
+            opacity: 0.7;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            background: rgba(2, 6, 23, 0.8);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 0.5rem;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--zerox-gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--zerox-gold) 0%, #FDB931 100%);
+            color: #000;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .google-icon {
+            color: #EA4335;
+        }
+
+        .discord-icon {
+            color: #5865F2;
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .auth-link {
+            color: var(--zerox-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-container">
+        <div class="auth-bg-particle p1"></div>
+        <div class="auth-bg-particle p2"></div>
+
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="./assets/images/logos/zerox-icon.jpg" alt="Zerox Logo" class="auth-logo">
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Login to access your dashboard & wallet</p>
+            </div>
+
+            <form action="./dashboard.html">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <div class="form-input-wrapper">
+                        <i data-lucide="mail" class="form-input-icon" width="18"></i>
+                        <input type="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="form-input-wrapper">
+                        <i data-lucide="lock" class="form-input-icon" width="18"></i>
+                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn">Sign In</button>
+            </form>
+
+            <div class="divider">
+                <span>OR CONTINUE WITH</span>
+            </div>
+
+            <button class="social-btn">
+                <i data-lucide="chrome" class="google-icon" width="20"></i>
+                Google
+            </button>
+            <button class="social-btn">
+                <i data-lucide="gamepad-2" class="discord-icon" width="20"></i>
+                Discord
+            </button>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="#" class="auth-link">Register Now</a>
+                <br>
+                <a href="./index.html" class="auth-link"
+                    style="font-size: 0.8rem; margin-top: 1rem; display: inline-block;">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Simple mock login for PWA feel
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add minimal delay for effect
+            const btn = document.querySelector('.auth-btn');
+            btn.innerHTML = 'Logging in...';
+            setTimeout(() => {
+                window.location.href = './dashboard.html';
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Championship Text Glow */
+.text-gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+/* Button Glow Effect */
+.btn-gold-hover:hover {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+}

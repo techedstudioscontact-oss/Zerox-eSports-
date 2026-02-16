@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===== Helper Functions =====
+    
+    // Check if requester is Master Admin (superadmin)
+    function isMasterAdmin() {
+      let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      return request.auth != null && (
+        role == 'superadmin' ||
+        request.auth.token.email == 'ope@zeroxesports.com'
+      );
+    }
+
+    // Check if requester is Moderator or above (admin or superadmin)
+    function isModerator() {
+      return request.auth != null && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superadmin'];
+    }
+
+    // Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // ===== USERS Collection =====
+    match /users/{userId} {
+      // Read: Users can read their own profile, Master Admin can read all
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isMasterAdmin());
+      
+      // Create: Users can create their own profile on signup
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      
+      // Update: Users can update their own profile, BUT cannot change critical fields
+      allow update: if isAuthenticated() && request.auth.uid == userId
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'coins', 'walletBalance', 'isVerified']));
+      
+      // Write: Master Admin can write anything (promote/demote roles, etc.)
+      allow write: if isMasterAdmin();
+    }
+    
+    // ===== TOURNAMENTS Collection =====
+    match /tournaments/{tournamentId} {
+      allow read: if true; // Public read
+      allow write: if isModerator(); // Only moderators can create/edit tournaments
+    }
+
+    // ===== TEAMS Collection =====
+    match /teams/{teamId} {
+      allow read: if true; // Public read
+      
+      // Captain can update team (but not verification or payment status)
+      allow update: if isAuthenticated() && request.auth.uid == resource.data.captainId
+                    && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['isVerified', 'paymentStatus', 'verifiedBy']));
+      
+      // Teams can be created by authenticated users
+      allow create: if isAuthenticated();
+      
+      // Moderators can do anything
+      allow write: if isModerator();
+    }
+
+    // ===== MATCHES Collection =====
+    match /matches/{matchId} {
+      allow read: if true; // Public read for live scores
+      allow write: if isModerator(); // Only moderators can create/edit matches
+    }
+
+    // ===== PLAYERS Collection =====
+    match /players/{playerId} {
+      allow read: if isAuthenticated();
+      allow update: if isAuthenticated() && request.auth.uid == playerId;
+      allow create: if isAuthenticated() && request.auth.uid == playerId;
+      allow delete: if isMasterAdmin();
+    }
+
+    // ===== SETTINGS Collection =====
+    match /settings/{settingId} {
+      allow read: if true; // Everyone can read settings (for lockdown, broadcast, etc.)
+      allow write: if isMasterAdmin(); // Only Master Admin can modify
+    }
+
+    // ===== PAYMENTS Collection =====
+    match /payments/{paymentId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.userId || isModerator());
+      allow create: if isAuthenticated(); // Users can submit payment proofs
+      allow update: if isModerator(); // Moderators verify payments
+      allow delete: if isMasterAdmin();
+    }
+
+    // ===== DISPUTES Collection =====
+    match /disputes/{disputeId} {
+      allow read: if isAuthenticated() && (request.auth.uid == resource.data.reportedBy || isModerator());
+      allow create: if isAuthenticated(); // Users can create disputes
+      allow update: if isModerator(); // Moderators resolve disputes
+      allow delete: if isMasterAdmin();
+    }
+
+    // ===== NOTIFICATIONS Collection =====
+    match /notifications/{notificationId} {
+      allow read: if true; // Public read for broadcasts
+      allow create: if isMasterAdmin(); // Only Master Admin can send notifications
+      allow delete: if isMasterAdmin();
+    }
+
+    // ===== VIOLATIONS Collection (Anti-cheat logs) =====
+    match /violations/{violationId} {
+      allow read: if isModerator(); // Only moderators can view violations
+      allow create: if true; // System can log violations
+      allow update: if isModerator(); // Moderators can review and take action
+    }
+  }
+}

@@ -63,4 +63,19 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://techedstudioscontact-oss.github.io/Zerox-eSports-/login.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://techedstudioscontact-oss.github.io/Zerox-eSports-/dashboard.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://techedstudioscontact-oss.github.io/Zerox-eSports-/wallet.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -2,11 +2,12 @@
   "name": "Zerox eSports",
   "short_name": "Zerox",
   "description": "India's Premier Professional Gaming Organization - BGMI & Free Fire Championships",
-  "start_url": "/index.html",
+  "start_url": "/Zerox-eSports-/",
+  "scope": "/Zerox-eSports-/",
   "display": "standalone",
   "background_color": "#0f1729",
   "theme_color": "#ffd700",
-  "orientation": "any",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "./assets/images/logos/zerox-icon.jpg",
@@ -21,14 +22,17 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["sports", "entertainment", "games"],
-  "screenshots": [],
+  "categories": [
+    "sports",
+    "entertainment",
+    "games"
+  ],
   "shortcuts": [
     {
       "name": "Register for Tournament",
       "short_name": "Register",
       "description": "Quick access to tournament registration",
-      "url": "/index.html#tournaments",
+      "url": "/Zerox-eSports-/#tournaments",
       "icons": [
         {
           "src": "./assets/images/logos/zerox-icon.jpg",
@@ -40,7 +44,19 @@
       "name": "View Teams",
       "short_name": "Teams",
       "description": "See our roster",
-      "url": "/index.html#teams",
+      "url": "/Zerox-eSports-/#teams",
+      "icons": [
+        {
+          "src": "./assets/images/logos/zerox-icon.jpg",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "My Wallet",
+      "short_name": "Wallet",
+      "description": "Check your wallet balance",
+      "url": "/Zerox-eSports-/wallet.html",
       "icons": [
         {
           "src": "./assets/images/logos/zerox-icon.jpg",
@@ -48,7 +64,5 @@
         }
       ]
     }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false
+  ]
 }
